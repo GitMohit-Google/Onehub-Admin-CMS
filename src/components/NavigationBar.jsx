@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { BsQuestionCircleFill } from "react-icons/bs";
 import { motion } from "framer-motion";
+import HomeContext from "../context/Home/HomeContext";
 
 const NavigationBar = () => {
+  const {selectedSection, setSelectedSection} = useContext(HomeContext);
   const firstLetter = "M";
   return (
     <div className="flex flex-col border-b-2 border-b-gray-200">
       {/* Serach bar and profile action*/}
-      <div className="flex flex-row p-10 items-center justify-between">
+      <div className="flex flex-row py-8 px-6 items-center justify-between">
         {/* Search Bar */}
         <div className="search p-3 px-4 flex flex-row items-center gap-4 bg-[#F6F6F6] rounded-md w-[60%]">
           <IoIosSearch className="text-xl text-gray-700" />
@@ -44,9 +46,9 @@ const NavigationBar = () => {
 
       {/* Path */}
       <div
-        className="px-10 pb-3 text-[##5A5A5A]"
+        className="px-10 pb-3 text-[#5A5A5A]"
       >
-        OneHub / Content Management
+        {selectedSection} / Content Management
       </div>
     </div>
   );
