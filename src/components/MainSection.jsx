@@ -43,6 +43,11 @@ const MainSection = () => {
     return groupedFiles;
   };
 
+  const displayName = (name)=>{
+    const nameSegments = name.split("-");
+    const returnedName = nameSegments.slice(1,nameSegments.length).join("-")
+    return returnedName;
+  }
   const testFiles = groupTestingFiles(testingFiles);
 
   return (
@@ -53,7 +58,7 @@ const MainSection = () => {
           <h3 className="font-bold text-lg mb-2">Knowledge Centre</h3>
           {testFiles["test-knowledge-centre"].map((file, index) => (
             <p key={index} className="mb-1">
-              {file}
+              {displayName(file)}
             </p>
           ))}
 
@@ -61,7 +66,7 @@ const MainSection = () => {
           <h3 className="font-bold text-lg mb-2">Spaces</h3>
           {testFiles["spaces"].map((file, index) => (
             <p key={index} className="mb-1">
-              {file}
+              {displayName(file)}
             </p>
           ))}
 
@@ -69,13 +74,13 @@ const MainSection = () => {
           <h3 className="font-bold text-lg mb-2">Contest and rewards</h3>
           {testFiles["contest-rewards"].map((file, index) => (
             <p key={index} className="mb-1">
-              {file}
+              {displayName(file)}
             </p>
           ))}
           <h3 className="font-bold text-lg mt-4 mb-2">Other Files</h3>
           {testFiles["other"].map((file, index) => (
             <p key={index} className="mb-1">
-              {file}
+              {displayName(file)}
             </p>
           ))}
         </div>
