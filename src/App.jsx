@@ -46,6 +46,8 @@ const App = () => {
       console.log("No token found in localStorage");
     }
   }, [dispatch]);
+
+  
   return (
     <div className="overflow-auto font-googleSans h-screen">
       <HomeState>
