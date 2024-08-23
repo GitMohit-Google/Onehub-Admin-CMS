@@ -39,7 +39,13 @@ const CustomAccordion = ({ title, children }) => {
             ))}
           </tbody>
         </table>
-      </AccordionDetails>
+      </AccordionDetails> 
+      {/* <AccordionDetails>
+        {children.map((item, index) => (
+          <div key={index}>{index + 1}. {item}{' '} 
+          </div>
+        ))}
+      </AccordionDetails> */}
     </Accordion>
   );
 };
