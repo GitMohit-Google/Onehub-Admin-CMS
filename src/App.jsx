@@ -4,6 +4,7 @@ import { Home, SignIn } from "./pages";
 import HomeState from "./context/Home/HomeState";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./app/actions/authAction";
+import { toast } from "react-toastify";
 
 const App = () => {
   const user = useSelector((state)=>state.auth.user);
