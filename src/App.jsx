@@ -7,11 +7,11 @@ import { useSelector } from "react-redux";
 const App = () => {
   const user = useSelector((state)=>state.auth.user);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (!user) {
-      navigate("/signin");
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     navigate("/signin");
+  //   }
+  // }, [user]);
   return (
     <div className="overflow-auto font-googleSans h-screen">
       <HomeState>
