@@ -1,10 +1,10 @@
 // src/Pages/SignIn.js
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { login } from "../app/slice/authSlice";
 import { Navigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { login } from "../app/actions/authAction";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -12,32 +12,32 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const handleSignIn = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   const token = await dispatch(login({ email, password })).unwrap();
-    //   if(typeof token === "object") toast.success("Logged In succesfully");
-    //   if (token) {
-    //     const object = {
-    //       email: email,
-    //       password: password,
-    //     };
-    //     localStorage.setItem("jwtToken", JSON.stringify(object));
-    //     localStorage.setItem("loginSuccess", true);
-    //   }
-    // } catch (error) {
-    //   toast.error(error.message || "Login failed: User does not exist or incorrect password");
-    // }
+    e.preventDefault();
+    try {
+      const token = dispatch(login( email, password ));
+      if(typeof token === "object") toast.success("Logged In succesfully");
+      if (token) {
+        const object = {
+          email: email,
+          password: password,
+        };
+        localStorage.setItem("jwtToken", JSON.stringify(object));
+        localStorage.setItem("loginSuccess", true);
+      }
+    } catch (error) {
+      toast.error(error.message || "Login failed: User does not exist or incorrect password");
+    }
   };
 
   // Check if user is already authenticated, then redirect
   const isUser = useSelector((state) => state.auth.user);
   if (isUser) {
-    return <Navigate to="/database-manager" />;
+    return <Navigate to="/" />;
   }
 
   return (
     <div className="flex items-center justify-center h-screen bg-[#FCFCFC]">
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <div className="flex bg-white shadow-lg rounded-3xl w-[70%] h-[60%] flex-row">
         <div className="flex h-full justify-center items-center w-[60%] px-16">
           <div className="flex flex-col gap-10 w-full">
